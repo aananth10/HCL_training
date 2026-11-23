@@ -1,0 +1,23 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PALINDROME-NUMBER.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 NUMBER-IN PIC 9(8).
+       01 ORIGINAL-NUM PIC 9(8).
+       01 REVERSE-NUM PIC 9(8) VALUE ZERO.
+       01 DIGIT-VALUE PIC 9.
+       PROCEDURE DIVISION.
+           DISPLAY "Enter a number: " WITH NO ADVANCING.
+           ACCEPT NUMBER-IN.
+           MOVE NUMBER-IN TO ORIGINAL-NUM.
+           PERFORM UNTIL NUMBER-IN = ZERO
+               DIVIDE NUMBER-IN BY 10 GIVING NUMBER-IN REMAINDER DIGIT-VALUE
+               MULTIPLY REVERSE-NUM BY 10 GIVING REVERSE-NUM
+               ADD DIGIT-VALUE TO REVERSE-NUM
+           END-PERFORM.
+           IF ORIGINAL-NUM = REVERSE-NUM
+               DISPLAY "It is a palindrome."
+           ELSE
+               DISPLAY "It is not a palindrome."
+           END-IF.
+           STOP RUN.

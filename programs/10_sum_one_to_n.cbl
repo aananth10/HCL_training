@@ -1,0 +1,16 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SUM-ONE-TO-N.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 LIMIT-N PIC 9(5).
+       01 COUNTER PIC 9(5).
+       01 TOTAL PIC 9(10) VALUE ZERO.
+       PROCEDURE DIVISION.
+           DISPLAY "Enter N: " WITH NO ADVANCING.
+           ACCEPT LIMIT-N.
+           PERFORM VARYING COUNTER FROM 1 BY 1
+               UNTIL COUNTER > LIMIT-N
+               ADD COUNTER TO TOTAL
+           END-PERFORM.
+           DISPLAY "Sum: " TOTAL.
+           STOP RUN.

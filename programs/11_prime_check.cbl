@@ -1,0 +1,23 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PRIME-CHECK.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 NUMBER-IN PIC 9(5).
+       01 DIVISOR PIC 9(5).
+       01 REMAINDER-VALUE PIC 9(5).
+       01 IS-PRIME PIC X VALUE "Y".
+       PROCEDURE DIVISION.
+           DISPLAY "Enter a number: " WITH NO ADVANCING.
+           ACCEPT NUMBER-IN.
+           IF NUMBER-IN < 2
+               MOVE "N" TO IS-PRIME
+           ELSE
+               PERFORM VARYING DIVISOR FROM 2 BY 1
+                   UNTIL DIVISOR * DIVISOR > NUMBER-IN
+                   DIVIDE NUMBER-IN BY DIVISOR GIVING DIVISOR
+                       REMAINDER REMAINDER-VALUE
+                   IF REMAINDER-VALUE = ZERO MOVE "N" TO IS-PRIME END-IF
+               END-PERFORM
+           END-IF.
+           IF IS-PRIME = "Y" DISPLAY "It is PRIME." ELSE DISPLAY "It is NOT PRIME." END-IF.
+           STOP RUN.

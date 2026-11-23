@@ -1,0 +1,21 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ARRAY-MAXIMUM.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 NUMBER-TABLE.
+          05 NUMBER-ITEM PIC 9(5) OCCURS 5 TIMES.
+       01 I PIC 9.
+       01 MAX-VALUE PIC 9(5).
+       PROCEDURE DIVISION.
+           PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5
+               DISPLAY "Enter number " I ": " WITH NO ADVANCING
+               ACCEPT NUMBER-ITEM(I)
+           END-PERFORM.
+           MOVE NUMBER-ITEM(1) TO MAX-VALUE.
+           PERFORM VARYING I FROM 2 BY 1 UNTIL I > 5
+               IF NUMBER-ITEM(I) > MAX-VALUE
+                   MOVE NUMBER-ITEM(I) TO MAX-VALUE
+               END-IF
+           END-PERFORM.
+           DISPLAY "Maximum: " MAX-VALUE.
+           STOP RUN.
